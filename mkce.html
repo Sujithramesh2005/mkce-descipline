@@ -2,191 +2,711 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>M.Kumarasamy College of Engineering - Discipline Rules</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+    <title>Discipline & Success - MKCE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body {
-            font-family: 'Roboto', Arial, sans-serif;
-            background: linear-gradient(120deg, #e0e7ef 0%, #f4f6fa 100%);
+
+        
+       html, body {
+            height: 100%;
             margin: 0;
             padding: 0;
+            background: black;
         }
-        header {
-            background: #003366;
+           
+        canvas {
+            display: block;
+            position: absolute;
+            top: 0; left: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+        .center-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             color: #fff;
-            padding: 28px 0 18px 0;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            font-family: 'Consolas', monospace;
+            font-size: 2rem;
+            text-shadow: 0 0 10px #fff, 0 0 20px #0ff;
+            z-index: 1;
+            pointer-events: none;
         }
-        header img {
-            width: 70px;
-            margin-bottom: 10px;
-        }
-        main {
-            max-width: 700px;
-            margin: 40px auto 30px auto;
-            background: #fff;
-            padding: 36px 40px 30px 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 18px rgba(0,0,0,0.10);
-        }
-        h1, h2 {
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-        h2 {
-            color: #003366;
-            margin-top: 0;
-        }
-        .rules-section {
+       
+        
+        .navbar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(90deg, #0ff2, #0ff1 60%, #0ff2);
             display: flex;
-            gap: 30px;
-            align-items: flex-start;
-            margin-bottom: 24px;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.7rem 2.5rem;
+            z-index: 2;
+            box-sizing: border-box;
+            box-shadow: 0 2px 16px #0ff3;
         }
-        .rules-images {
-            flex: 0 0 160px;
+        .navbar .logo {
+            color: #fff;
+            font-family: 'Orbitron', 'Consolas', monospace;
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-shadow: 0 0 12px #0ff, 0 0 2px #fff;
+        }
+        .navbar .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        .navbar .nav-links a {
+            color: #0ff;
+            background: rgba(0,0,0,0.13);
+            border: 1px solid #0ff;
+            border-radius: 8px;
+            padding: 0.5rem 1.3rem;
+            text-decoration: none;
+            font-family: 'Orbitron', 'Consolas', monospace;
+            font-size: 1.05rem;
+            font-weight: 500;
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+            box-shadow: 0 0 8px #0ff2;
+        }
+        .navbar .nav-links a:hover {
+            background: #0ff;
+            color: #070b1a;
+            box-shadow: 0 0 16px #0ff;
+        }
+        .main-header {
+            margin-top: 110px;
+            text-align: center;
+            color: #0ff;
+            font-family: 'Orbitron', 'Consolas', monospace;
+            font-size: 2.5rem;
+            text-shadow: 0 0 16px #0ff, 0 0 4px #fff;
+            letter-spacing: 2px;
+        }
+        .discipline-box {
+            position: relative;
+            margin: 40px auto 0 auto;
+            width: 100vw;
+            max-width: 1350px;
+            border: 2px solid #0ff;
+            border-radius: 18px;
+            box-shadow: 0 4px 32px #0ff2;
+            padding: 2.2rem 2.5rem;
+            z-index: 1;
+            color: #fff;
+            font-family: 'Consolas', 'Orbitron', monospace;
+            font-size: 1.18rem;
+            line-height: 1.7;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+            flex-direction: row-reverse;
+        }
+        .discipline-box img {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 14px;
+            box-shadow: 0 2px 16px #0ff4;
+            flex-shrink: 0;
+            margin-right: 0;
+        }
+        .discipline-box h2 {
+            color: #0ff;
+            font-family: 'Orbitron', 'Consolas', monospace;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            text-shadow: 0 0 8px #0ff8;
+        }
+        .section {
+            max-width: 1350px;
+            margin: 40px auto 0 auto;
+            padding: 2rem 2.5rem;
+            background: rgba(7,11,26,0.95);
+            border: 2px solid #0ff;
+            border-radius: 18px;
+        
+            color: #fff;
+            font-family: 'Consolas', 'Orbitron', monospace;
+        }
+        .section h2 {
+            color: #0ff;
+            font-family: 'Orbitron', 'Consolas', monospace;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-size: 1.7rem;
+            text-shadow: 0 0 8px #0ff8;
+        }
+        .benefits-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        .benefit-card {
+            flex: 1 1 250px;
+            min-width: 220px;
+            background: rgba(7,11,26,0.95);
+            border: 2px solid #0ff;
+            border-radius: 14px;
+            box-shadow: 0 2px 16px #0ff2;
+            padding: 1.5rem;
+            color: #fff;
+            font-family: 'Consolas','Orbitron',monospace;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .benefit-card img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 1rem;
+        }
+        .testimonials {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+        .testimonial-card {
+            flex: 1 1 300px;
+            min-width: 250px;
+            background: rgba(7,11,26,0.95);
+            border: 2px solid #0ff;
+            border-radius: 14px;
+            box-shadow: 0 2px 16px #0ff2;
+            padding: 1.5rem;
+            color: #fff;
+            font-family: 'Consolas','Orbitron',monospace;
+            margin-bottom: 1.5rem;
+        }
+        .testimonial-card .author {
+            margin-top: 1rem;
+            color: #0ff;
+            font-weight: bold;
+        }
+        .faq-list {
+            margin-top: 1.5rem;
+        }
+        .faq-item {
+            margin-bottom: 1.2rem;
+        }
+        .faq-question {
+            color: #0ff;
+            font-weight: bold;
+        }
+        .contact-form {
             display: flex;
             flex-direction: column;
-            gap: 18px;
+            gap: 1rem;
+            max-width: 400px;
+            margin: 0 auto;
         }
-        .rules-images img {
-            width: 150px;
+        .contact-form input, .contact-form textarea {
+            padding: 0.7rem;
             border-radius: 8px;
-            border: 2px solid #e0e7ef;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-        }
-        ul {
-            margin-bottom: 20px;
-            padding-left: 20px;
-        }
-        label {
-            display: block;
-            margin: 14px 0 7px;
-            font-weight: 500;
-        }
-        input[type="text"], select, textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #b0b8c1;
-            border-radius: 5px;
-            font-size: 1rem;
-            background: #f8fafc;
-            transition: border 0.2s;
-        }
-        input[type="text"]:focus, select:focus, textarea:focus {
-            border: 1.5px solid #003366;
-            outline: none;
-        }
-        button {
-            background: linear-gradient(90deg, #003366 60%, #0055a5 100%);
+            border: 1px solid #0ff;
+            background: #070b1a;
             color: #fff;
+            font-family: 'Consolas', monospace;
+            font-size: 1rem;
+        }
+        .contact-form button {
+            background: #0ff;
+            color: #070b1a;
             border: none;
-            padding: 12px 32px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 18px;
-            font-size: 1.08rem;
+            border-radius: 8px;
+            padding: 0.7rem 1.2rem;
+            font-family: 'Orbitron',monospace;
             font-weight: 600;
-            letter-spacing: 0.5px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-            transition: background 0.2s;
+            cursor: pointer;
+            box-shadow: 0 0 8px #0ff2;
+            transition: background 0.2s, color 0.2s;
         }
-        button:hover {
-            background: linear-gradient(90deg, #0055a5 60%, #003366 100%);
+        .contact-form button:hover {
+            background: #0cc;
+            color: #fff;
         }
-        .note {
-            background: #eaf3ff;
-            border-left: 4px solid #003366;
-            padding: 12px 18px;
-            border-radius: 6px;
-            margin-bottom: 22px;
-            color: #003366;
-            font-size: 1.01rem;
-        }
-        footer {
-            background: #003366;
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100vw;
+            background: linear-gradient(90deg, #0ff2 0%, #070b1a 100%);
             color: #fff;
             text-align: center;
-            padding: 18px 0 12px 0;
+            padding: 0.7rem 0;
+            font-family: 'Consolas', monospace;
             font-size: 1rem;
-            letter-spacing: 0.5px;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-            box-shadow: 0 -2px 8px rgba(0,0,0,0.07);
+            letter-spacing: 1px;
+            z-index: 2;
+            box-shadow: 0 -2px 16px #0ff3;
         }
-        @media (max-width: 800px) {
-            main {
-                padding: 18px 8vw 18px 8vw;
+        
+        @media (max-width: 900px) {
+            .discipline-box, .section {
+                width: 95vw;
+                padding: 1.2rem 1rem;
+                font-size: 1rem;
             }
-            .rules-section {
+            .main-header {
+                font-size: 2rem;
+            }
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap');
+        @media (max-width: 600px) {
+            .navbar {
                 flex-direction: column;
-                gap: 18px;
+                padding: 0.5rem 1rem;
             }
-            .rules-images {
-                flex-direction: row;
-                gap: 12px;
-                justify-content: flex-start;
+            .discipline-box, .section {
+                margin-top: 90px;
+                padding: 0.8rem 0.6rem;
+                font-size: 0.98rem;
             }
-            .rules-images img {
-                width: 110px;
+            .main-header {
+                font-size: 1.3rem;
             }
+        }
+        .discipline-info-cards {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin: 40px auto 0 auto;
+            max-width: 1350px;
+            z-index: 1;
+            position: relative;
+            flex-wrap: wrap;
+        }
+        .discipline-info-card {
+            flex: 1 1 300px;
+            min-width: 270px;
+            background: rgba(7,11,26,0.95);
+            border: 2px solid #0ff;
+            border-radius: 14px;
+            box-shadow: 0 2px 16px #0ff2;
+            padding: 1.5rem;
+            color: #fff;
+            font-family: 'Consolas','Orbitron',monospace;
+            margin-bottom: 1.5rem;
+            transition: transform 0.25s cubic-bezier(.4,2,.6,1), box-shadow 0.2s;
+            cursor: pointer;
+        }
+        .discipline-info-card:hover {
+            transform: scale(1.07) translateY(-10px);
+            box-shadow: 0 8px 32px #0ff6;
+            z-index: 2;
+        }
+        .discipline-info-card.active {
+            transform: scale(1.13) translateY(-24px);
+            box-shadow: 0 16px 48px #0ffb;
+            z-index: 3;
+        }
+        .discipline-info-card h3 {
+            color: #0ff;
+            margin-top: 0;
+            text-shadow: 0 0 8px #0ff8;
+        }
+        .discipline-image-cards {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin: 40px auto 0 auto;
+            max-width: 1350px;
+            z-index: 1;
+            position: relative;
+            flex-wrap: wrap;
+        }
+        .discipline-image-card {
+            flex: 1 1 220px;
+            min-width: 200px;
+            background: rgba(7,11,26,0.95);
+            border: 2px solid #0ff;
+            border-radius: 14px;
+            box-shadow: 0 2px 16px #0ff2;
+            padding: 1.2rem;
+            color: #fff;
+            font-family: 'Consolas','Orbitron',monospace;
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .discipline-image-card img {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px #0ff4;
+        }
+        .discipline-image-card button {
+            margin: 1rem 0 0 0;
+            background: #0ff;
+            color: #070b1a;
+            border: none;
+            border-radius: 8px;
+            padding: 0.5rem 1.2rem;
+            font-family: 'Orbitron',monospace;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 0 8px #0ff2;
+            transition: background 0.2s, color 0.2s;
+        }
+        .discipline-image-card button:hover {
+            background: #0cc;
+            color: #fff;
+        }
+        .discipline-image-card button.active {
+            background: #c2185b;
+            color: #fff;
+        }
+        .discipline-image-label {
+            margin-top: 1rem;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <header>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Emblem_of_India.svg" alt="College Logo">
-        <h1>M.Kumarasamy College of Engineering</h1>
-        <p>Discipline Rules & Compliance Form</p>
-    </header>
-    <main>
-        <h2>Discipline Rules</h2>
-        <div class="rules-section">
-            <div>
-                <ul>
-                    <li>Students must maintain a clean shave.</li>
-                    <li>Formal shoes are mandatory.</li>
-                    <li>Formal dress code must be followed.</li>
-                    <li>Identity card must be worn at all times inside campus.</li>
-                    <li>Mobile phones are not allowed during class hours.</li>
-                </ul>
-                <div class="note">
-                    <strong>Note:</strong> Adherence to the above rules ensures a professional and respectful campus environment.
-                </div>
+    <canvas id="space"></canvas>
+    <nav class="navbar">
+        <div class="logo">MKCE <span style="color:#fff;font-weight:400;">| Discipline & Success</span></div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#about">About</a>
+            <a href="#rules">Rules</a>
+
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+    <div class="main-header">
+        Discipline: The Foundation of Success at MKCE
+    </div>
+    <div class="discipline-box" id="about">
+        <img src="c:\Users\anbur\Downloads\mkce-Photoroom.png" alt="Discipline">
+        <div>
+            <h2>About Discipline at MKCE</h2>
+            <p>
+                At MKCE, discipline is not just a rule—it's a way of life. We believe that discipline is the bridge between goals and accomplishment. It is the ability to stay focused, follow routines, and maintain consistency in actions, even when motivation fades.  
+            </p>
+            <p>
+                Our faculty and staff are committed to guiding students on their journey, helping them develop habits that lead to both personal and professional growth. Through a blend of academic rigor, extracurricular activities, and a supportive community, 
+                MKCE ensures that every student is equipped with the discipline required to thrive in today's competitive world.
+            </p>
+        </div>
+    </div>
+
+    <div class="section" id="benefits">
+        <h2>Benefits of Practicing Discipline</h2>
+        <div class="benefits-list">
+            <div class="benefit-card">
+                <img src="https://img.icons8.com/fluency/96/000000/goal.png" alt="Goal Achievement">
+                <h3>Goal Achievement</h3>
+                <p>Discipline helps you set clear goals and work towards them systematically, turning your ambitions into achievements.</p>
             </div>
-            <div class="rules-images">
-                <img src="https://cdn.pixabay.com/photo/2016/03/23/13/34/beard-1276742_1280.jpg" alt="Clean Shave Example" title="Clean Shave Example">
-                <img src="https://cdn.pixabay.com/photo/2016/11/29/09/32/adult-1868750_1280.jpg" alt="Formal Dress Code Example" title="Formal Dress Code Example">
+            <div class="benefit-card">
+                <img src="https://img.icons8.com/fluency/96/000000/clock.png" alt="Time Management">
+                <h3>Time Management</h3>
+                <p>With discipline, you learn to prioritize tasks, avoid procrastination, and make the most of your time every day.</p>
+            </div>
+            <div class="benefit-card">
+                <img src="https://img.icons8.com/fluency/96/000000/brain.png" alt="Self-Control">
+                <h3>Self-Control</h3>
+                <p>Discipline builds self-control, helping you resist distractions and stay focused on what truly matters.</p>
+            </div>
+            <div class="benefit-card">
+                <img src="https://img.icons8.com/fluency/96/000000/medal.png" alt="Success">
+                <h3>Long-Term Success</h3>
+                <p>Consistent discipline leads to long-term success, both academically and in life beyond college.</p>
             </div>
         </div>
-        <p>If any of the above rules are not followed, please submit the compliance form below.</p>
-        <form>
-            <label for="name">Student Name:</label>
-            <input type="text" id="name" name="name" required>
+    </div>
 
-            <label for="roll">Roll Number:</label>
-            <input type="text" id="roll" name="roll" required>
+    <div class="discipline-info-cards">
+        <div class="discipline-info-card">
+            <h3>What is Discipline?</h3>
+            <p>
+                Discipline means training yourself to follow rules, routines, and standards. It helps you stay focused, avoid distractions, and make steady progress toward your goals. Self-discipline is the key to building good habits and breaking bad ones.
+            </p>
+        </div>
+        <div class="discipline-info-card">
+            <h3>Why is Discipline Important?</h3>
+            <p>
+                Discipline builds consistency and resilience. It helps you overcome challenges, manage your time, and achieve both short-term and long-term success. With discipline, you can turn your ambitions into achievements and develop a strong character.
+            </p>
+        </div>
+        <div class="discipline-info-card">
+            <h3>How to Practice Discipline?</h3>
+            <p>
+                Set clear goals, create a daily routine, and stick to your commitments. Avoid procrastination, reward your progress, and learn from setbacks. Practicing discipline every day will help you grow and succeed in all areas of life.
+            </p>
+        </div>
+        <div style="order: -1; flex-basis:100%; text-align:left; margin: 2.5rem 0 1.2rem 0;">
+            <h2 style="color:#0ff; font-family:'Orbitron','Consolas',monospace; font-size:1.7rem; text-shadow:0 0 8px #0ff8; margin:0;">
+            Our MKCE Discipline Rules and Reports
+            </h2>
+        </div>
+    </div>
+    <div style="max-width: 1350px; margin: 0; display: flex; justify-content: flex-start;" id="rules">
+        <div style="background: none; border: none; box-shadow: none; padding: 1.5rem 2rem 0 0; color: #0ff; font-family: 'Orbitron','Consolas',monospace; min-width: 320px;">
+            <h1 style="color:#0ff; margin-top:0; text-shadow:0 0 16px #0ff, 0 0 4px #fff; font-size:1.4rem; font-family:'Orbitron','Consolas',monospace; font-size:xx-large;">
+                Our College Discipline Rules
+            </h1>
+            <ul style="color:#fff; font-size:1.1rem; margin-top:1rem;">
+                <li>Maintain punctuality and regular attendance in all classes and activities.</li>
+                <li>Wear the prescribed uniform and maintain a neat appearance at all times.</li>
+                <li>Respect faculty, staff, and fellow students.</li>
+                <li>Keep the campus clean and avoid littering.</li>
+                <li>Mobile phones must be switched off during class hours.</li>
+                <li>Follow all safety and security guidelines on campus.</li>
+                <li>Participate actively in academic and extracurricular activities.</li>
+                <li>Report any disciplinary issues to the concerned authorities.</li>
+            </ul>
+        </div>
+    </div>
+    <div class="discipline-image-cards">
+        <div class="discipline-image-card">
+            <img src="c:\Users\anbur\Downloads\shave.jpg" alt="Shave">
+            <button onclick="openReportForm('Clean Shave')">Report</button>
+            <div class="discipline-image-label">Clean Shave</div>
+        </div>
+        <div class="discipline-image-card">
+            <img src="c:\Users\anbur\Downloads\formal.jpg" alt="Shoe">
+            <button onclick="openReportForm('Polished Shoes')">Report</button>
+            <div class="discipline-image-label">Polished Shoes</div>
+        </div>
+        <div class="discipline-image-card">
+            <img src="c:\Users\anbur\Downloads\shoe.jpg" alt="Formal Dress">
+            <button onclick="openReportForm('Formal Dress')">Report</button>
+            <div class="discipline-image-label">Formal Dress</div>
+        </div>
+        <div class="discipline-image-card">
+            <img src="c:\anbu\work\freelance\Surbhi\python-esileapclient\esileapclient\osc\v1\sujith html project\css style\tag.jpg.jpeg" alt="ID Card">
+            <button onclick="openReportForm('ID Card Worn')">Report</button>
+            <div class="discipline-image-label">ID Card Worn</div>
+        </div>
+        <div class="discipline-image-card">
+            <img src="https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=300&q=80" alt="General Discipline">
+            <button onclick="openReportForm('General Discipline')">Report</button>
+            <div class="discipline-image-label">General Discipline</div>
+        </div>
+    </div>
 
-            <label for="violation">Rule Not Followed:</label>
-            <select id="violation" name="violation" required>
-                <option value="">--Select--</option>
-                <option value="Clean Shave">Clean Shave</option>
-                <option value="Formal Shoes">Formal Shoes</option>
-                <option value="Formal Dress">Formal Dress</option>
-                <option value="Identity Card">Identity Card</option>
-                <option value="Mobile Phone">Mobile Phone</option>
-            </select>
+    <!-- Report Modal -->
+    <div id="reportModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(7,11,26,0.92); backdrop-filter: blur(2px); z-index:1000; align-items:center; justify-content:center;">
+        <div style="background:rgba(15,22,40,0.98); border:2px solid #0ff; border-radius:18px; box-shadow:0 8px 32px #0ff6, 0 0 32px #0ff2 inset; padding:2.2rem 1.5rem 1.5rem 1.5rem; max-width:370px; width:92vw; position:relative;">
+            <button onclick="closeReportForm()" style="position:absolute; top:10px; right:14px; background:none; border:none; color:#0ff; font-size:1.7rem; cursor:pointer; text-shadow:0 0 8px #0ff;">&times;</button>
+            <h2 style="color:#0ff; font-family:'Orbitron','Consolas',monospace; margin-top:0; text-align:center; text-shadow:0 0 12px #0ff, 0 0 2px #fff;">Report Issue</h2>
+            <form id="reportForm" onsubmit="submitReport(event)">
+                <input type="hidden" id="reportIssue" name="issue">
+                <div style="margin-bottom:1rem;">
+                    <label style="color:#fff;">Your Name</label>
+                    <input type="text" id="reportName" name="name" required style="width:100%; background:#10182a; color:#0ff; border:1px solid #0ff; border-radius:8px; padding:0.6rem;">
+                </div>
+                <div style="margin-bottom:1rem;">
+                    <label style="color:#fff;">Reg. No</label>
+                    <input type="text" id="reportRegno" name="regno" required style="width:100%; background:#10182a; color:#0ff; border:1px solid #0ff; border-radius:8px; padding:0.6rem;">
+                </div>
+                <div style="margin-bottom:1rem;">
+                    <label style="color:#fff;">Email ID</label>
+                    <input type="email" id="reportEmail" name="email" required style="width:100%; background:#10182a; color:#0ff; border:1px solid #0ff; border-radius:8px; padding:0.6rem;">
+                </div>
+                <div style="margin-bottom:1rem;">
+                    <label style="color:#fff;">Issue</label>
+                    <input type="text" id="reportIssueDisplay" disabled style="width:100%; background:#181f2f; color:#0ff; border:1px solid #0ff; border-radius:8px; padding:0.6rem;">
+                </div>
+                <div style="margin-bottom:1rem;">
+                    <label style="color:#fff;">Details</label>
+                    <textarea id="reportDetails" name="details" rows="3" required style="width:100%; background:#10182a; color:#0ff; border:1px solid #0ff; border-radius:8px; padding:0.6rem;"></textarea>
+                </div>
+                <button type="submit" style="width:100%; background:linear-gradient(90deg,#0ff 60%,#0cc); color:#070b1a; border:none; border-radius:8px; padding:0.8rem 0; font-family:'Orbitron',monospace; font-weight:600; cursor:pointer; box-shadow:0 0 12px #0ff4; font-size:1.1rem; letter-spacing:1px;">Submit</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        function openReportForm(issue) {
+            document.getElementById('reportModal').style.display = 'flex';
+            document.getElementById('reportIssue').value = issue;
+            document.getElementById('reportIssueDisplay').value = issue;
+            document.getElementById('reportForm').reset();
+            document.getElementById('reportIssueDisplay').value = issue;
+        }
+        function closeReportForm() {
+            document.getElementById('reportModal').style.display = 'none';
+        }
+        function submitReport(e) {
+            e.preventDefault();
+            // Collect form data
+            const name = document.getElementById('reportName').value;
+            const regno = document.getElementById('reportRegno').value;
+            const email = document.getElementById('reportEmail').value;
+            const issue = document.getElementById('reportIssue').value;
+            const details = document.getElementById('reportDetails').value;
 
-            <label for="remarks">Remarks (optional):</label>
-            <textarea id="remarks" name="remarks" rows="3"></textarea>
+            // Prepare mailto link
+            const subject = encodeURIComponent('Discipline Issue Report: ' + issue);
+            const body = encodeURIComponent(
+                `Name: ${name}\nReg. No: ${regno}\nEmail: ${email}\nIssue: ${issue}\nDetails: ${details}`
+            );
+            // Change the email address below to your receiving email
+            const mailto = `mailto:discipline@mkce.ac.in?subject=${subject}&body=${body}`;
+            window.location.href = mailto;
 
-            <button type="submit">Submit Compliance Form</button>
-        </form>
-    </main>
-    <footer>
-        &copy; 2024 M.Kumarasamy College of Engineering | All Rights Reserved
-    </footer>
-</body>
-</html>
+            closeReportForm();
+        }
+        // Optional: Close modal on background click
+        document.getElementById('reportModal').addEventListener('click', function(e) {
+            if (e.target === this) closeReportForm();
+        });
+    </script>
+    
+        <div class="center-text"></div>
+        <script>
+            const canvas = document.getElementById('space');
+            const ctx = canvas.getContext('2d');
+            let w, h;
+            function resize() {
+            w = window.innerWidth;
+            // Use full document height for canvas
+            h = Math.max(
+                document.body.scrollHeight,
+                document.documentElement.scrollHeight,
+                document.body.offsetHeight,
+                document.documentElement.offsetHeight,
+                document.body.clientHeight,
+                document.documentElement.clientHeight,
+                window.innerHeight
+            );
+            canvas.width = w;
+            canvas.height = h;
+            canvas.style.width = w + 'px';
+            canvas.style.height = h + 'px';
+            }
+            window.addEventListener('resize', resize);
+            window.addEventListener('scroll', () => {
+            // Keep canvas fixed as background
+            canvas.style.top = window.scrollY + 'px';
+            });
+            resize();
+
+            // Generate stars
+            const stars = [];
+            const numStars = 300;
+            function randomY() {
+            // Spread stars over the full canvas height
+            return Math.random() * canvas.height;
+            }
+            function createStars() {
+            stars.length = 0;
+            for (let i = 0; i < numStars; i++) {
+                stars.push({
+                x: Math.random() * canvas.width,
+                y: randomY(),
+                r: Math.random() * 1.5 + 0.2,
+                speed: Math.random() * 0.3 + 0.05,
+                alpha: Math.random() * 0.5 + 0.5
+                });
+            }
+            }
+            createStars();
+            window.addEventListener('resize', createStars);
+
+            function drawMoon() {
+            // Draw a glowing moon at top right
+            const moonX = w - 120;
+            const moonY = 120;
+            const moonRadius = 60;
+            // Outer glow
+            ctx.save();
+            ctx.beginPath();
+            ctx.arc(moonX, moonY, moonRadius + 18, 0, 2 * Math.PI);
+            ctx.fillStyle = 'rgba(200,220,255,0.13)';
+            ctx.shadowColor = '#fff';
+            ctx.shadowBlur = 40;
+            ctx.fill();
+            ctx.restore();
+            // Main moon
+            ctx.save();
+            ctx.beginPath();
+            ctx.arc(moonX, moonY, moonRadius, 0, 2 * Math.PI);
+            ctx.fillStyle = '#f8f8ff';
+            ctx.shadowColor = '#fff';
+            ctx.shadowBlur = 20;
+            ctx.fill();
+            ctx.restore();
+            // Craters
+            ctx.save();
+            ctx.globalAlpha = 0.18;
+            ctx.beginPath();
+            ctx.arc(moonX - 20, moonY - 10, 10, 0, 2 * Math.PI);
+            ctx.arc(moonX + 15, moonY + 12, 7, 0, 2 * Math.PI);
+            ctx.arc(moonX + 25, moonY - 18, 5, 0, 2 * Math.PI);
+            ctx.arc(moonX - 10, moonY + 20, 6, 0, 2 * Math.PI);
+            ctx.fillStyle = '#b0b0c0';
+            ctx.fill();
+            ctx.restore();
+            }
+
+            function drawStars() {
+            ctx.clearRect(0, 0, w, h);
+            drawMoon();
+            for (let star of stars) {
+                ctx.save();
+                ctx.globalAlpha = star.alpha;
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.r, 0, 2 * Math.PI);
+                ctx.fillStyle = '#fff';
+                ctx.shadowColor = '#fff';
+                ctx.shadowBlur = 8;
+                ctx.fill();
+                ctx.restore();
+
+                // Move star
+                star.y += star.speed;
+                if (star.y > h) {
+                star.x = Math.random() * w;
+                star.y = 0;
+                }
+            }
+            }
+
+            function animate() {
+            drawStars();
+            requestAnimationFrame(animate);
+            }
+            animate();
+        </script>
+        <style>
+            html, body {
+            height: auto !important;
+            min-height: 100%;
+            margin: 0;
+            padding: 0;
+            background: black;
+            overflow-x: hidden;
+            }
+            canvas#space {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            min-height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            }
+            body > *:not(canvas) {
+            position: relative;
+            z-index: 1;
+            }
+        </style>
+        <footer class="footer">
+            &copy; 2024 MKCE. All rights reserved.
+        </footer>
+    </body>
+    </html>
