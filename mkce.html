@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>M.Kumarasamy College of Engineering - Discipline Rules</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background: linear-gradient(120deg, #e0e7ef 0%, #f4f6fa 100%);
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #003366;
+            color: #fff;
+            padding: 28px 0 18px 0;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+        }
+        header img {
+            width: 70px;
+            margin-bottom: 10px;
+        }
+        main {
+            max-width: 700px;
+            margin: 40px auto 30px auto;
+            background: #fff;
+            padding: 36px 40px 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.10);
+        }
+        h1, h2 {
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        h2 {
+            color: #003366;
+            margin-top: 0;
+        }
+        .rules-section {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            margin-bottom: 24px;
+        }
+        .rules-images {
+            flex: 0 0 160px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .rules-images img {
+            width: 150px;
+            border-radius: 8px;
+            border: 2px solid #e0e7ef;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        ul {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+        label {
+            display: block;
+            margin: 14px 0 7px;
+            font-weight: 500;
+        }
+        input[type="text"], select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #b0b8c1;
+            border-radius: 5px;
+            font-size: 1rem;
+            background: #f8fafc;
+            transition: border 0.2s;
+        }
+        input[type="text"]:focus, select:focus, textarea:focus {
+            border: 1.5px solid #003366;
+            outline: none;
+        }
+        button {
+            background: linear-gradient(90deg, #003366 60%, #0055a5 100%);
+            color: #fff;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 18px;
+            font-size: 1.08rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            transition: background 0.2s;
+        }
+        button:hover {
+            background: linear-gradient(90deg, #0055a5 60%, #003366 100%);
+        }
+        .note {
+            background: #eaf3ff;
+            border-left: 4px solid #003366;
+            padding: 12px 18px;
+            border-radius: 6px;
+            margin-bottom: 22px;
+            color: #003366;
+            font-size: 1.01rem;
+        }
+        footer {
+            background: #003366;
+            color: #fff;
+            text-align: center;
+            padding: 18px 0 12px 0;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -2px 8px rgba(0,0,0,0.07);
+        }
+        @media (max-width: 800px) {
+            main {
+                padding: 18px 8vw 18px 8vw;
+            }
+            .rules-section {
+                flex-direction: column;
+                gap: 18px;
+            }
+            .rules-images {
+                flex-direction: row;
+                gap: 12px;
+                justify-content: flex-start;
+            }
+            .rules-images img {
+                width: 110px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Emblem_of_India.svg" alt="College Logo">
+        <h1>M.Kumarasamy College of Engineering</h1>
+        <p>Discipline Rules & Compliance Form</p>
+    </header>
+    <main>
+        <h2>Discipline Rules</h2>
+        <div class="rules-section">
+            <div>
+                <ul>
+                    <li>Students must maintain a clean shave.</li>
+                    <li>Formal shoes are mandatory.</li>
+                    <li>Formal dress code must be followed.</li>
+                    <li>Identity card must be worn at all times inside campus.</li>
+                    <li>Mobile phones are not allowed during class hours.</li>
+                </ul>
+                <div class="note">
+                    <strong>Note:</strong> Adherence to the above rules ensures a professional and respectful campus environment.
+                </div>
+            </div>
+            <div class="rules-images">
+                <img src="https://cdn.pixabay.com/photo/2016/03/23/13/34/beard-1276742_1280.jpg" alt="Clean Shave Example" title="Clean Shave Example">
+                <img src="https://cdn.pixabay.com/photo/2016/11/29/09/32/adult-1868750_1280.jpg" alt="Formal Dress Code Example" title="Formal Dress Code Example">
+            </div>
+        </div>
+        <p>If any of the above rules are not followed, please submit the compliance form below.</p>
+        <form>
+            <label for="name">Student Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="roll">Roll Number:</label>
+            <input type="text" id="roll" name="roll" required>
+
+            <label for="violation">Rule Not Followed:</label>
+            <select id="violation" name="violation" required>
+                <option value="">--Select--</option>
+                <option value="Clean Shave">Clean Shave</option>
+                <option value="Formal Shoes">Formal Shoes</option>
+                <option value="Formal Dress">Formal Dress</option>
+                <option value="Identity Card">Identity Card</option>
+                <option value="Mobile Phone">Mobile Phone</option>
+            </select>
+
+            <label for="remarks">Remarks (optional):</label>
+            <textarea id="remarks" name="remarks" rows="3"></textarea>
+
+            <button type="submit">Submit Compliance Form</button>
+        </form>
+    </main>
+    <footer>
+        &copy; 2024 M.Kumarasamy College of Engineering | All Rights Reserved
+    </footer>
+</body>
+</html>
