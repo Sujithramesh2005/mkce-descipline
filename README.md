@@ -20,5 +20,7 @@
   Whether for schools, businesses, or other institutions, <strong>Stylish</strong> simplifies the discipline management process, reduces paperwork, and fosters a transparent environment where rules are clearly communicated and enforced.
 </p>
 
-![report](https://github.com/Sujithramesh2005/mkce-descipline/blob/main/report.png?raw=true)
+![report](https://github.com/Sujithramesh2005/mkce-descipline/blob/main/report.png?raw=true)>
+![from](https://github.com/Sujithramesh2005/mkce-descipline/blob/main/from.png?raw=true)
+
 
