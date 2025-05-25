@@ -19,8 +19,11 @@
   <img src="https://img.icons8.com/fluency/32/checked-checkbox.png" alt="Check Icon" style="vertical-align:middle; margin-right:6px;">
   Whether for schools, businesses, or other institutions, <strong>Stylish</strong> simplifies the discipline management process, reduces paperwork, and fosters a transparent environment where rules are clearly communicated and enforced.
 </p>
-![from](https://github.com/Sujithramesh2005/mkce-descipline/blob/main/home%20page.png?raw=true)
+
+
 ![report](https://github.com/Sujithramesh2005/mkce-descipline/blob/main/report.png?raw=true)>
+
+
 ![from](https://github.com/Sujithramesh2005/mkce-descipline/blob/main/from.png?raw=true)
 
 
