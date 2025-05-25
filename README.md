@@ -1,4 +1,4 @@
-# mkce-descipline
+# descipline-report
 <p>
   <img src="https://img.icons8.com/fluency/48/discipline.png" alt="Discipline Icon" style="vertical-align:middle; margin-right:8px;">
   Stylish is a modern Discipline Warning Website designed to help organizations maintain order and accountability. With a sleek user interface, real-time notifications, and detailed warning logs, Stylish streamlines the process of issuing, tracking, and managing discipline warnings. Administrators can easily monitor user behavior, generate reports, and ensure compliance with organizational policies, all within a secure and user-friendly platform.
