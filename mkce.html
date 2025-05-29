@@ -685,6 +685,24 @@
             }
             animate();
         </script>
+    <script>
+  // Disable right-click
+  document.addEventListener("contextmenu", function (e) {
+    alert("⚠️ Copying is not allowed!");
+    e.preventDefault();
+  });
+
+  // Disable Ctrl+U (view source), Ctrl+C (copy), Ctrl+S (save), and F12 (developer tools)
+  document.addEventListener("keydown", function (e) {
+    if (
+      (e.ctrlKey && (e.key === 'u' || e.key === 'c' || e.key === 's')) ||
+      e.key === 'F12'
+    ) {
+      alert("⚠️ This action is disabled to protect the source code.");
+      e.preventDefault();
+    }
+  });
+    </script>
         <style>
             html, body {
             height: auto !important;
