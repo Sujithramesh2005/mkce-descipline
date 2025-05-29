@@ -1,3 +1,20 @@
+
+  // Disable right-click
+  document.addEventListener("contextmenu", function (e) {
+    alert("⚠️ Copying is not allowed!");
+    e.preventDefault();
+  });
+
+  // Disable Ctrl+U (view source), Ctrl+C (copy), Ctrl+S (save), and F12 (developer tools)
+  document.addEventListener("keydown", function (e) {
+    if (
+      (e.ctrlKey && (e.key === 'u' || e.key === 'c' || e.key === 's')) ||
+      e.key === 'F12'
+    ) {
+      alert("⚠️ This action is disabled to protect the source code.");
+      e.preventDefault();
+    }
+  });
 function openReportForm(issue) {
     document.getElementById('reportModal').style.display = 'flex';
     document.getElementById('reportIssue').value = issue;
